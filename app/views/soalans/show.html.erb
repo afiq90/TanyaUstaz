@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @soalan.user.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @soalan.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @soalan.description %>
+</p>
+
+<%= link_to 'Edit', edit_soalan_path(@soalan) %> |
+<%= link_to 'Back', soalans_path %>

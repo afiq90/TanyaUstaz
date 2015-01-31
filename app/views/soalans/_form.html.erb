@@ -1,0 +1,10 @@
+<%= simple_form_for(@soalan, html: {class: "form-signin"}) do |f| %>
+  <%= f.error_notification %>
+
+    <%#= f.input :name, required: false, autofocus: true, label:false, placeholder:"Nama", input_html: {class: "form-control"} %>
+    <%= f.input :name, placeholder: @soalan.user.name, input_html: {class: "form-control"} %>
+    <%= f.input :title, required: false, autofocus: true, label:false, placeholder:"Tajuk Soalan", input_html: {class: "form-control"} %>
+    <%= f.input :description, required: false, autofocus: true, label:false, placeholder:"Huraikan Serba Sedikit Tentang Soalan Anda", input_html: {class: "form-control", rows: 10} %>
+
+    <%= f.button :submit, "Tanya Soalan", class: "btn btn-primary btn-block" %>
+<% end %>

@@ -1,0 +1,5 @@
+<p><%= raw(answer.content_html) %> 
+	<% if can? :destroy, answer %>
+   	  <%= link_to "Delete", soalan_answer_path(answer.soalan, answer), method: :delete, data: {confirm: "Are you sure to delete this answer ?"} %>
+   	<%end%>
+</p>

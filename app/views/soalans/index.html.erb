@@ -1,0 +1,65 @@
+<h1>Index Soalan</h1>
+      <%= flash[:alert] %>
+    <%= link_to 'Soalan Baru', new_soalan_path, class: "btn btn-default btn-success" %>
+
+      <% @soalans.each do |soalan| %>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= soalan.title.capitalize %></h3>
+
+
+           <div class="caption" style="text-align:center;">
+                <%= link_to like_soalan_path(soalan),  class: "like", method: :put do %>
+                   <button type="button" class="btn btn-info" aria-label="Left Align">
+                     <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+                     <span class="badge"><%= soalan.get_upvotes.size %></span>
+                   </button>
+                <% end %> 
+ 
+ 
+                <%= link_to unlike_soalan_path(soalan), class: "like", method: :put do %>
+                  <button type="button" class="btn btn-info" aria-label="Left Align"> 
+                   <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+                   <span class="badge"><%= soalan.get_downvotes.size %></span>
+                  </button>  
+                <% end %>
+          </div>
+
+
+
+        </div>
+      <div class="panel-body">
+          <%= soalan.description %>
+          <%= time_ago_in_words(soalan.created_at)%> Ago By <%= soalan.user.name %>
+
+          <% if can? :update, soalan %>
+          <%= link_to "Edit", edit_soalan_path(soalan)%>
+          <%end%>
+
+          <% if can? :destroy, soalan %>
+          <%= link_to "Delete", soalan, method: :delete, data: {confirm: "Are you sure?"}%>
+          <%end%>
+
+          <% if soalan.answers.any? %>
+              
+            <p><br/><strong>Answers</strong></p>
+                
+            <%= render soalan.answers %>
+
+          <% end %>
+ 
+              <%= form_for([soalan, soalan.answers.build], html: {class: "form-signin"}) do |f| %>
+              <br/>
+              Add Your Answer : 
+              <%= f.text_area :content, input_html: {class: "form-control"} %>
+              <%= submit_tag "Add Answer", class: "btn btn-default btn-success" %>
+              <% end %>
+        
+
+        </div>
+      </div>
+      <% end %>
+
+
+

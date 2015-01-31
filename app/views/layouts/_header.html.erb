@@ -1,0 +1,45 @@
+  <div class="bs-example bs-navbar-top-example" data-example-id="navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Tanya Ustaz", root_path, class: "navbar-brand" %>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+       <nav class="collapse navbar-collapse navbar-ex1-collapse">
+          <% if user_signed_in? -%>
+            <ul class="nav navbar-nav navbar-right">
+              <li>Welcome Home, <%= current_user.name %></li> 
+              <li><%= link_to 'Account', edit_user_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav pull-left">
+              <li><%= link_to "Home", root_path %></li> 
+              <li><%= link_to "Dashboard", soalans_path %></li>              
+            </ul>
+              
+          <% else -%>
+            <ul class="nav navbar-nav pull-right">
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            </ul>
+            <ul class="nav navbar-nav pull-left">
+              <li><%= link_to "Dashboard", soalans_path %></li>
+            </ul>
+          <% end -%>
+        </nav><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+  </div>
+
+
+
+

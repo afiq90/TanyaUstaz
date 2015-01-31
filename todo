@@ -1,0 +1,4 @@
+TanyaUstaz is a website like a reddit or hacker new but more specific to religious question. — Edit
+
+Add voting system to the soalan, most votes got to top. Use ACTS_AS_VOTABLE gem
+Add voting system to the answer, most votes got to top. Use ACTS_AS_VOTABLE gem
